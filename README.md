@@ -1,2 +1,2 @@
-# 42
+# 42 libft
 ecole 42
