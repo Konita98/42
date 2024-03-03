@@ -41,7 +41,7 @@ int	ft_strlen(char *str)
 	return (count);
 }
 
-char	*extract_word(char const *s, char c)
+static char	*extract_word(char const *s, char c)
 {
 	char	*word;
 	int		i;
@@ -72,36 +72,38 @@ char	**ft_split(char const *s, char c)
 	i = 0;
 	count = countexdel(s, c);
 	tab = (char **)malloc(count * sizeof(char *));
+	if (tab == 0)
+		return (NULL);
 	while (*s != '\0' && i <= count)
 	{
 		word = extract_word(s, c);
 		tab[i] = (char *)malloc((ft_strlen(word) + 1) * sizeof(char));
 		j = 0;
-		while (j <= l)
+		while ((j <= ft_strlen(word)))
 		{
 			tab[i][j] = word[j];
 			j++;
 		}
 		free(extract_word(s, c));
-		s += l + 1;
+		s += ft_strlen(word) + 1;
 		i++;
 	}
 	return (tab);
 }
 
-/*#include <stdio.h>
+#include <stdio.h>
 int main(void)
 {
 	int i;
 	i =0;
 	char	*phrase;
-	phrase = "coucouc tout le monde";
+	phrase = "je meuigf woh wfeoih wpfh fwei";
 	int j=countexdel(phrase,' ');
 	while(i != j)
 	{
-		printf("ft existant %s\n",ft_split("coucouc tout le monde", ' ')[i]);
+		printf("ft existant %s\n",ft_split(phrase, ' ')[i]);
 		i++;
 	}
 	//printf("ft cree %s\n",substr("coucouc tout le monde", 5, 5));
 	return (0);
-}*/
+}
