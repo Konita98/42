@@ -1,16 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nerica-k <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/02 12:44:59 by nerica-k          #+#    #+#             */
-/*   Updated: 2024/03/02 12:45:24 by nerica-k         ###   ########.fr       */
+/*   Created: 2024/03/03 09:38:34 by nerica-k          #+#    #+#             */
+/*   Updated: 2024/03/03 09:39:02 by nerica-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+
+int	occurence(char const	*set, char c)
+{
+	while (*set != '\0')
+	{
+		if (*set == c)
+		{
+			return (1);
+		}
+		set++;
+	}
+	return (0);
+}
 
 int	ft_strlen(char *str)
 {
@@ -25,37 +38,37 @@ int	ft_strlen(char *str)
 	return (count);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*str;
-	int		l;
+	char	*trimmed;
+	int		i;
 
-	l = ft_strlen((char *)s1) + ft_strlen((char *)s2);
-	str = (char *)malloc(l * sizeof(char));
-	if (str == 0)
-	{
-		str = NULL;
-	}
-	while ((*s1 != '\0'))
-	{
-		*str = *s1;
-		str++;
+	i = 0;
+	trimmed = (char *)malloc(ft_strlen((char *)s1) * sizeof(char));
+	if (trimmed == 0)
+		return (NULL);
+	while ((occurence (set, *s1) == 1) && *s1 != '\0')
 		s1++;
-	}
-	while ((*s2 != '\0'))
+	while (*s1 != '\0')
 	{
-		*str = *s2;
-		str++;
-		s2++;
+		trimmed[i] = *s1;
+		s1++;
+		i++;
 	}
-	*str = '\0';
-	return (str - l);
+	trimmed[i] = '\0';
+	i--;
+	while (occurence (set, trimmed[i]) == 1)
+	{
+		trimmed[i] = '\0';
+		i--;
+	}
+	return (trimmed);
 }
 
 /*#include <stdio.h>
 int main(void)
 {
-	printf("ft existant %s\n",ft_strjoin("coucou", "tout le monde"));
+	printf("ft existant %s\n",ft_strtrim("yzzhellozxz", "zy"));
 	//printf("ft cree %s\n",substr("coucouc tout le monde", 5, 5));
 	return (0);
 }*/
