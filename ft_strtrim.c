@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-int	occurence(char const	*set, char c)
+static int	occurence(char const	*set, char c)
 {
 	while (*set != '\0')
 	{
@@ -23,19 +23,6 @@ int	occurence(char const	*set, char c)
 		set++;
 	}
 	return (0);
-}
-
-int	ft_strlen(char *str)
-{
-	int	count;
-
-	count = 0;
-	while (*str != '\0')
-	{
-		str++;
-		count++;
-	}
-	return (count);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)

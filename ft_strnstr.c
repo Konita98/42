@@ -10,45 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
-{
-	int				val;
-	unsigned int	i;
-
-	i = 0;
-	while (i < n)
-	{
-		if (*s1 == *s2)
-		{
-			val = 0;
-		}
-		else
-		{
-			val = *s1 - *s2;
-			break ;
-		}
-		s1++;
-		s2++;
-		i++;
-	}
-	return (val);
-}
-
-int	ft_strlen(char *str)
-{
-	int	n;
-
-	n = 0;
-	while (*str != '\0')
-	{
-		str++;
-		n++;
-	}
-	return (n);
-}
+#include "libft.h"
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {

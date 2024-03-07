@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-int	countexdel(char const *s, char c)
+static int	countexdel(char const *s, char c)
 {
 	int	count;
 
@@ -24,19 +24,6 @@ int	countexdel(char const *s, char c)
 			count++;
 		}
 		s++;
-	}
-	return (count);
-}
-
-int	ft_strlen(char *str)
-{
-	int	count;
-
-	count = 0;
-	while (*str != '\0')
-	{
-		str++;
-		count++;
 	}
 	return (count);
 }

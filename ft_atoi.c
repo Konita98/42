@@ -9,36 +9,9 @@
 /*   Updated: 2024/03/02 09:27:28 by nerica-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
 #include "libft.h"
 
-int	ft_is_digit(char str)
-{
-	int	result ;
-
-	result = 0;
-	if (str >= '0' && str <= '9')
-	{
-		result = 1 ;
-	}
-	return (result);
-}
-
-int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (*str != '\0')
-	{
-		str++;
-		i++;
-	}
-	return (i);
-}
-
-int	ft_isspace(char str)
+static int	ft_isspace(char str)
 {
 	int	result;
 
@@ -68,7 +41,7 @@ int	ft_atoi(const char *s)
 			minus *= (-1);
 		i++;
 	}
-	while (ft_is_digit(str[i]) == 1 && i < ft_strlen(str))
+	while (ft_isdigit(str[i]) == 1 && i < ft_strlen(str))
 	{
 		result = result * 10 + (str[i++] - 48);
 	}
@@ -76,3 +49,10 @@ int	ft_atoi(const char *s)
 	return (result);
 	return (0);
 }
+
+/*#include <stdio.h>
+int main(void)
+{
+	printf("%d", ft_atoi("6416"));
+	return 0;
+}*/
