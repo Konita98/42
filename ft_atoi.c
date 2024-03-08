@@ -49,7 +49,6 @@ int	ft_atoi(const char *s)
 	return (result);
 	return (0);
 }
-
 /*#include <stdio.h>
 int main(void)
 {

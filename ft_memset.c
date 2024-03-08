@@ -9,6 +9,7 @@
 /*   Updated: 2024/02/24 11:37:31 by nerica-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
 void	*ft_memset(void *s, int c, int n)
 {
@@ -20,6 +21,15 @@ void	*ft_memset(void *s, int c, int n)
 		*str = (char)c;
 		n--;
 		str++;
+	}
+	if (c == 48)
+	{
+		while (n != 0)
+		{
+			*str = 0;
+			n--;
+			str++;
+		}
 	}
 	return (s);
 }

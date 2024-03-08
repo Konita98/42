@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static int	abs(int n)
+static int	absolute(int n)
 {
 	if (n < 0)
 		return (n * (-1));
@@ -26,7 +26,7 @@ char	*ft_itoa(int n)
 	int		nb;
 
 	i = 1;
-	nb = abs(n);
+	nb = absolute(n);
 	if (n == -2147483648)
 		return ("-2147483648");
 	if (n < 0)
@@ -42,7 +42,7 @@ char	*ft_itoa(int n)
 	result[i] = '\0';
 	while (i-- > 1)
 	{
-		result[i] = (abs(n) % 10) + '0';
+		result[i] = (absolute(n) % 10) + '0';
 		n /= 10;
 	}
 	return (result);

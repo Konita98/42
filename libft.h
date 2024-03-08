@@ -13,13 +13,13 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
-#include <unistd.h>
-#include <stdlib.h>
-int		ft_isalpha(char a);
-int		ft_isdigit(char a);
-int		ft_isalnum(char a);
-int		isascii(char c);
+# include <unistd.h>
+# include <stdlib.h>
 
+int		ft_isalpha(int a);
+int		ft_isdigit(int a);
+int		ft_isalnum(int a);
+int		ft_isascii(int c);
 int		ft_strlen(char *str);
 void	*ft_memset(void *s, int c, int n);
 void	*ft_bzero(void *s, int n);
@@ -30,7 +30,6 @@ int		ft_strlcat(char *dest, char *src, unsigned int size);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
 char	*ft_strchr(char *str, int c);
-
 char	*ft_strrchr(char *str, int c);
 int		ft_strncmp(char *s1, char *s2, unsigned int n);
 void	*ft_memchr(const void	*s, int c, int n);
@@ -44,6 +43,6 @@ char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
-char 	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
 #endif /* __LIBFT_H__ */
