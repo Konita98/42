@@ -15,15 +15,18 @@ void	*ft_memcpy(void *d, const void *s, int n)
 {
 	char	*src;
 	char	*dest;
+	int		i;
 
+	i = 0;
 	src = (char *) s;
 	dest = (char *) d;
-	while (n != 0 && *src != '\0')
+	if (!d && !s)
+		return (0);
+	while (n != 0)
 	{
-		*dest = *src;
-		dest++;
-		src++;
+		dest[i] = src[i];
 		n--;
+		i++;
 	}
 	return (dest);
 }
@@ -31,9 +34,9 @@ void	*ft_memcpy(void *d, const void *s, int n)
 #include <string.h>
 int	main(void)
 {
-	char src[] = "hello eeryoihlwre";
-	char dst[] = "memmove can be very useful......";
-	ft_memcpy(dst, src, 5);
+	char src[] = "kjgfjhbntjjjjjjjjjjjjjjjjjjj";
+	char dst[] = "zy^@xw^@v";
+	ft_memcpy(dst, src, 6);
 	//memcpy(dst, src, 5);
 	printf("%s", dst );
 	return(0);

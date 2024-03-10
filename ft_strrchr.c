@@ -9,25 +9,22 @@
 /*   Updated: 2024/02/25 09:37:51 by nerica-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-char	*ft_strrchr(char *str, int c)
+char	*ft_strrchr(const char *str, int c)
 {
 	int	i;
-	int	j;
 
-	i = 0;
-	j = 0;
-	while (*str != '\0')
+	i = ft_strlen((char *)str);
+	while (i >= 0)
 	{
-		if (*str == c)
+		if (str[i] == (char)c)
 		{
-			j = i;
+			return ((char *)str + i);
 		}
-		i++;
-		str++;
+		i--;
 	}
-	str = str - i;
-	return (str + j);
+	return (NULL);
 }
 
 /*#include <stdio.h>

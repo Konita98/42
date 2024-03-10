@@ -27,25 +27,15 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 		else
 			return (NULL);
 	}
-	while (i < len)
+	while (*str_big && i < len)
 	{
 		if (ft_strncmp(str_big, str_little, ft_strlen(str_little)) == 0)
 		{
 			return (str_big);
 		}
+		
 		str_big++;
 		i++;
 	}
 	return (NULL);
 }
-/*#include <stdio.h>
-#include <string.h>
-int	main(void)
-{
-	const char src[] = "hella can be very useful......";
-	const char dst[] = "can";
-	printf("ft cree %s\n",ft_strnstr(src, dst, 10));
-	printf("ft cree %d",strnstr(src, dst, 10));
-
-	return(0);
-}*/

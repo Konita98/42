@@ -9,27 +9,31 @@
 /*   Updated: 2024/02/24 15:52:03 by nerica-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-int	ft_strlcat(char *dest, char *src, unsigned int size)
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	unsigned int	i;
-	unsigned int	j;
+	size_t	i;
+	size_t	j;
+	size_t	len;
+	size_t	result;
+	char	*s;
 
 	i = 0;
 	j = 0;
-	while (*dest != '\0')
+	len = ft_strlen(dest);
+	i = len;
+	s = (char *)src;
+	if (size > len)
+		result = len + (size_t)ft_strlen(s);
+	else
+		result = size + (size_t)ft_strlen(s);
+	while (src[j] != '\0' && i + 1 < size)
 	{
-		dest++;
+		dest[i] = src[j];
+		j++;
 		i++;
 	}
-	if (*dest == '\0')
-	{
-		while (*src != '\0' && j < size)
-		{
-			src++;
-			i += j;
-			j++;
-		}
-	}
-	return (i);
+	dest[i] = '\0';
+	return (result);
 }

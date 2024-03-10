@@ -11,36 +11,16 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-void	*ft_memset(void *s, int c, int n)
+void	*ft_memset(void *s, int c, size_t n)
 {
 	char	*str;
 
-	str = (char *) s;
-	while (n != 0 && *str != '\0')
+	str = s;
+	while (n != 0)
 	{
-		*str = (char)c;
+		*str = (size_t)c;
 		n--;
 		str++;
 	}
-	if (c == 48)
-	{
-		while (n != 0)
-		{
-			*str = 0;
-			n--;
-			str++;
-		}
-	}
 	return (s);
 }
-
-/*#include <stdio.h>
-#include <string.h>
-int	main(void)
-{
-	char str[] = "hello eeryoihlwre";
-
-	memset(str, 'p', 5);
-	printf("%s", str);
-	return(0);
-}*/

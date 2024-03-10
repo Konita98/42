@@ -9,27 +9,22 @@
 /*   Updated: 2024/02/24 17:32:38 by nerica-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-char	*ft_strchr(char *str, int c)
+char	*ft_strchr(const char *str, int c)
 {
-	while (*str != '\0')
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
 	{
-		if (*str == c)
+		if (str[i] == (char)c)
 		{
-			return (str);
+			return ((char *)str + i);
 		}
-		str++;
+		i++;
 	}
+	if (c == '\0')
+		return ((char *)str + i);
 	return (0);
 }
-
-/*#include <stdio.h>
-#include <ctype.h>
-#include <string.h>
-int	main(void)
-{
-	char* str = "Hello bicth";
-	printf("extract %s\n", ft_strchr(str, 'i'));
-	printf("extract %s\n", strchr(str, 'i'));
-	return(0);
-}*/

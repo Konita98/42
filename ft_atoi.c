@@ -35,7 +35,7 @@ int	ft_atoi(const char *s)
 	result = 0;
 	while (ft_isspace(str[i]) == 1)
 		i++;
-	while (i < ft_strlen(str) && (str[i] == 45 || str[i] == 43))
+	if (str[i] == 45 || str[i] == 43)
 	{
 		if (str[i] == 45)
 			minus *= (-1);

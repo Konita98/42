@@ -9,22 +9,29 @@
 /*   Updated: 2024/02/24 15:46:02 by nerica-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-int	ft_strlcpy(char *dst, char *src, int size)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	int	i;
-	int	count;
+	size_t	i;
+	char	*s;
 
 	i = 0;
-	count = 0;
-	while (i <= size - 1)
+	s = (char *)src;
+	if (!dst || !src)
+		return (0);
+	if (size == 0)
+		return (ft_strlen(s));
+	else
 	{
-		dst[i] = src[i];
-		i++;
-		count++;
+		while (i < (size - 1) && src[i] != '\0')
+		{
+			dst[i] = src[i];
+			i++;
+		}
 	}
 	dst[i] = '\0';
-	return (count);
+	return (ft_strlen(s));
 }
 
 /*#include <stdio.h>
