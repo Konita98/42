@@ -6,7 +6,7 @@
 /*   By: nerica-k <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 09:38:34 by nerica-k          #+#    #+#             */
-/*   Updated: 2024/03/03 09:39:02 by nerica-k         ###   ########.fr       */
+/*   Updated: 2024/03/11 07:22:42 by nerica-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	occurence(char const	*set, char c)
 
 static char	*trimmed_word(char const *s1, char const *set)
 {
-	int	i;
+	int		i;
 	char	*trimmed;
 
 	i = 0;
@@ -55,7 +55,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*trimmed;
 	char	*trimmed_mal;
 	int		i;
-	
+
 	i = 0;
 	trimmed = trimmed_word(s1, set);
 	trimmed_mal = (char *)malloc((ft_strlen(trimmed) + 1) * sizeof(char));

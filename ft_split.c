@@ -11,24 +11,28 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+//#include <stdio.h>
 
-static int	countexdel(char const *s, char c)
+static int	countword(char const *s, char c)
 {
 	int	count;
+	int	i;
 
-	count = 1;
-	while (*s != '\0' )
+	count = 0;
+	if(c == 0)
+		return (1);
+	while (s[i] == c && c != 0)
+		i++;
+	while (s[i] != '\0' )
 	{
-		if (*s == c)
-		{
+		if (s[i] != c && s[i + 1] == c)
 			count++;
-		}
-		s++;
+		i++;
 	}
 	return (count);
 }
 
-static char	*extract(char const *s, char c)
+static char	*f_word(char const *s, char c)
 {
 	char	*word;
 	int		i;
@@ -36,16 +40,22 @@ static char	*extract(char const *s, char c)
 
 	i = 0;
 	j = 0;
-	while (s[i] != '\0' && s[i] != c)
+	if (c == 0)
+		return((char *)s);
+	while (s[i] != '\0' && s[i] != c && c != 0)
 		i++;
-	word = (char *)malloc((i + 1) * sizeof(char));
-	while (j < i)
+	if (i != 0)
 	{
-		word[j] = s[j];
-		j++;
+		word = (char *)malloc((i + 1) * sizeof(char));
+		while (j < i + 1)
+		{
+			word[j] = s[j];
+			j++;
+		}
+		word[j] = '\0';
+		return (word);
 	}
-	word[j] = '\0';
-	return (word);
+	return (NULL);	
 }
 
 char	**ft_split(char const *s, char c)
@@ -56,38 +66,47 @@ char	**ft_split(char const *s, char c)
 	int		j;
 
 	i = 0;
-	count = countexdel(s, c);
-	tab = (char **)malloc(count * sizeof(char *));
-	if (tab == 0 || c == 0 || s == 0)
+	count = countword(s, c);
+	tab = (char **)malloc((count + 1) * sizeof(char *));
+	if (tab == 0 || s == 0)
 		return (NULL);
 	while (*s != '\0' && i <= count)
 	{
-		tab[i] = (char *)malloc((ft_strlen(extract(s, c)) + 1) * sizeof(char));
-		j = 0;
-		while ((j <= ft_strlen(extract(s, c))))
+		if (f_word(s, c))
 		{
-			tab[i][j] = extract(s, c)[j];
-			j++;
+			tab[i] = (char *)malloc((ft_strlen(f_word(s, c))) * sizeof(char));
+			j = 0;
+			while ((j < ft_strlen(f_word(s, c) + 1)))
+			{
+				tab[i][j] = f_word(s, c)[j];
+				j++;
+			}
+			tab[i][j] = '\0';
+			s += ft_strlen(f_word(s, c)) + 1;
+			free(f_word(s, c));
+			i++;
 		}
-		free(extract(s, c));
-		s += ft_strlen(extract(s, c)) + 1;
-		i++;
+		else
+			s++;
 	}
+	tab[count] = '\0';
 	return (tab);
 }
 
 /*#include <stdio.h>
+#include <string.h>
 int main(void)
 {
-	int i;
-	i =0;
-	char	*phrase;
-	phrase = "je meuigf woh wfeoih wpfh fwei";
-	int j=countexdel(phrase,' ');
-	while(i != j)
+	//char *tab = ft_split("tripouille", 0);
+	//printf("%d\n",strcmp(ft_split("tripouille", 0)[0], "tripouille"));
+	printf("%d\n",countword("tripouille", 0));
+	//printf("%ld\n",strlen(tab[0]));
+	printf("--%s\n",ft_split("tripouille", 0)[0]);
+	/*while (i <= countword("tripouille", 0))
 	{
-		printf("ft existant %s\n",ft_split(phrase, ' ')[i]);
+		printf("%s\n",ft_split("tripouille", 0)[i]);
 		i++;
 	}
+	//free(*tab);
 	return (0);
 }*/

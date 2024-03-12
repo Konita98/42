@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-//#include <stdio.h>
+
 static	void	*str_malloc(char const *s, unsigned int start, size_t len)
 {
 	unsigned int	len_malloc;
@@ -26,6 +26,7 @@ static	void	*str_malloc(char const *s, unsigned int start, size_t len)
 		len_malloc = 0;
 	return ((char *)malloc((len_malloc + 1) * sizeof(char)));
 }
+
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char			*substr;

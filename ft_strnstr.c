@@ -14,28 +14,35 @@
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t		i;
-	char		*str_big;
-	char		*str_little;
+	char		*sbig;
+	char		*sl;
+	size_t		len_l;
+	char		res_cmp;
 
 	i = 0;
-	str_big = (char *)big;
-	str_little = (char *)little;
-	if (str_big[i] == '\0')
+	sbig = (char *)big;
+	sl = (char *)little;
+	len_l = (size_t)ft_strlen(sl);
+	if (sbig[i] == '\0')
 	{
-		if (str_little[i] == '\0')
-			return (str_big);
+		if (sl[i] == '\0')
+			return (sbig);
 		else
 			return (NULL);
 	}
-	while (*str_big && i < len)
+	while (*sbig)
 	{
-		if (ft_strncmp(str_big, str_little, ft_strlen(str_little)) == 0)
-		{
-			return (str_big);
-		}
-		
-		str_big++;
+		if (ft_strncmp(sbig, sl, len_l) == 0 && (i + len_l) <= len)
+			return (sbig);
+		sbig++;
 		i++;
 	}
 	return (NULL);
 }
+
+/*#include <stdio.h>
+int main(void)
+{
+	printf("%s\n", ft_strnstr("aaabcabcd", "aaabc", 5));
+	return 0;
+}*/
