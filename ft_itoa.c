@@ -6,7 +6,7 @@
 /*   By: nerica-k <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 18:02:31 by nerica-k          #+#    #+#             */
-/*   Updated: 2024/03/03 18:02:56 by nerica-k         ###   ########.fr       */
+/*   Updated: 2024/03/12 13:33:02 by nerica-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,7 @@ static long long	len_malloc(long long n)
 	i = 1;
 	nb = absolute (n);
 	if (n == -2147483648)
-	{
 		return (11);
-	}
 	if (n < 0)
 	{
 		while (nb >= 10)
@@ -49,52 +47,30 @@ static long long	len_malloc(long long n)
 		}
 		return (i);
 	}
-	
 }
-//static char	*nb_to_str (int n);/
-/*void	*ft_memcpy(void *d, const void *s, int n)
-{
-	char	*src;
-	char	*dest;
-	int		i;
-
-	i = 0;
-	src = (char *) s;
-	dest = (char *) d;
-	if (!d && !s)
-		return (0);
-	while (n != 0)
-	{
-		dest[i] = src[i];
-		n--;
-		i++;
-	}
-	return (dest);
-}*/
 
 char	*ft_itoa(long long n)
 {
-	char	*result;
+	char			*result;
 	long long		len;
 	long long		nb;
 
 	nb = absolute(n);
 	len = len_malloc(n);
-	result = (char *)malloc((len + 1)  * sizeof(char));
+	result = (char *)malloc((len + 1) * sizeof(char));
 	if (!result)
 		return (NULL);
 	if (n < 0)
 		result[0] = 45;
 	if (nb == 0)
-		result[0] ='0';
+		result[0] = '0';
 	result[len] = '\0';
 	while (nb != 0)
 	{
 		result[len - 1] = (nb % 10) + '0';
-		nb /= 10; 
+		nb /= 10;
 		len--;
 	}
-	
 	return (result);
 }
 
