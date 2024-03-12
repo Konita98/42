@@ -81,26 +81,20 @@ char	*ft_itoa(long long n)
 	nb = absolute(n);
 	len = len_malloc(n);
 	result = (char *)malloc((len + 1)  * sizeof(char));
-	//printf("malloc %d\n",(len_malloc(n) + 1));
 	if (!result)
 		return (NULL);
-	/*if (n == -2147483648)
-	{
-		ft_memcpy((void *)result, "-2147483648", 12);
-		result[12] = '\0';
-		return (result);
-	}*/
 	if (n < 0)
 		result[0] = 45;
-	if (n == 0)
-		result[len - 1] ='0';
-	//result[len + 1] = '\0'; 
+	if (nb == 0)
+		result[0] ='0';
+	result[len] = '\0';
 	while (nb != 0)
 	{
 		result[len - 1] = (nb % 10) + '0';
 		nb /= 10; 
 		len--;
 	}
+	
 	return (result);
 }
 
