@@ -6,7 +6,7 @@
 /*   By: nerica-k <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 09:38:34 by nerica-k          #+#    #+#             */
-/*   Updated: 2024/03/11 07:22:42 by nerica-k         ###   ########.fr       */
+/*   Updated: 2024/03/13 17:02:30 by nerica-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ static int	occurence(char const	*set, char c)
 	while (*set != '\0')
 	{
 		if (*set == c)
-		{
 			return (1);
-		}
 		set++;
 	}
 	return (0);
@@ -31,7 +29,7 @@ static char	*trimmed_word(char const *s1, char const *set)
 	char	*trimmed;
 
 	i = 0;
-	trimmed = (char *)malloc((ft_strlen((char *)s1) + 1) * sizeof(char));
+	trimmed = (char *)malloc((ft_strlen(s1) + 1) * sizeof(char));
 	while ((occurence (set, *s1) == 1) && *s1 != '\0')
 		s1++;
 	while (*s1 != '\0')
@@ -52,14 +50,14 @@ static char	*trimmed_word(char const *s1, char const *set)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*trimmed;
-	char	*trimmed_mal;
-	int		i;
+	char const	*trimmed;
+	char		*trimmed_mal;
+	int			i;
 
 	i = 0;
 	trimmed = trimmed_word(s1, set);
 	trimmed_mal = (char *)malloc((ft_strlen(trimmed) + 1) * sizeof(char));
-	if (trimmed == 0)
+	if (!trimmed)
 		return (NULL);
 	while (trimmed[i] != '\0')
 	{

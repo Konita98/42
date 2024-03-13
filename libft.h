@@ -20,8 +20,9 @@
 int			ft_isalpha(int a);
 int			ft_isdigit(int a);
 int			ft_isalnum(int a);
+int			ft_isprint(int c);
 int			ft_isascii(int c);
-int			ft_strlen(char *str);
+int			ft_strlen(char const *str);
 void		*ft_memset(void *s, int c, size_t n);
 void		*ft_bzero(void *s, int n);
 void		*ft_memcpy(void *d, const void *s, int n);
@@ -45,6 +46,7 @@ char		*ft_strtrim(char const *s1, char const *set);
 char		**ft_split(char const *s, char c);
 char		*ft_itoa(long long n);
 char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+void		*ft_striteri(char *s, void (*f)(unsigned int, char *));
 void		ft_putchar_fd(char c, int fd);
 void		ft_putstr_fd(char *s, int fd);
 void		ft_putendl_fd(char *s, int fd);

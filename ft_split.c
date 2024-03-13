@@ -11,51 +11,29 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-//#include <stdio.h>
+#include <stdio.h>
 
 static int	countword(char const *s, char c)
 {
 	int	count;
 	int	i;
+	int	bl;
 
+	bl = 1;
 	count = 0;
-	if(c == 0)
-		return (1);
-	while (s[i] == c && c != 0)
-		i++;
-	while (s[i] != '\0' )
+	i = 0;
+	while (s[i])
 	{
-		if (s[i] != c && s[i + 1] == c)
+		if (s[i] != c && bl == 1)
+		{
 			count++;
+			bl = 0;
+		}
+		else if (s[i] == c)
+			bl = 1;
 		i++;
 	}
 	return (count);
-}
-
-static char	*f_word(char const *s, char c)
-{
-	char	*word;
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	if (c == 0)
-		return((char *)s);
-	while (s[i] != '\0' && s[i] != c && c != 0)
-		i++;
-	if (i != 0)
-	{
-		word = (char *)malloc((i + 1) * sizeof(char));
-		while (j < i + 1)
-		{
-			word[j] = s[j];
-			j++;
-		}
-		word[j] = '\0';
-		return (word);
-	}
-	return (NULL);	
 }
 
 char	**ft_split(char const *s, char c)
@@ -65,48 +43,21 @@ char	**ft_split(char const *s, char c)
 	int		count;
 	int		j;
 
-	i = 0;
+	j = 0;
 	count = countword(s, c);
 	tab = (char **)malloc((count + 1) * sizeof(char *));
-	if (tab == 0 || s == 0)
+	if (!tab)
 		return (NULL);
-	while (*s != '\0' && i <= count)
+	while (j < count)
 	{
-		if (f_word(s, c))
-		{
-			tab[i] = (char *)malloc((ft_strlen(f_word(s, c))) * sizeof(char));
-			j = 0;
-			while ((j < ft_strlen(f_word(s, c) + 1)))
-			{
-				tab[i][j] = f_word(s, c)[j];
-				j++;
-			}
-			tab[i][j] = '\0';
-			s += ft_strlen(f_word(s, c)) + 1;
-			free(f_word(s, c));
-			i++;
-		}
-		else
+		i = 0;
+		while (*s == c)
 			s++;
+		while (s[i] != c && s[i] != '\0')
+			i++;
+		tab[j++] = ft_substr(s, 0, i);
+		s += i;
 	}
-	tab[count] = '\0';
+	tab[count] = NULL;
 	return (tab);
 }
-
-/*#include <stdio.h>
-#include <string.h>
-int main(void)
-{
-	//char *tab = ft_split("tripouille", 0);
-	//printf("%d\n",strcmp(ft_split("tripouille", 0)[0], "tripouille"));
-	printf("%d\n",countword("tripouille", 0));
-	//printf("%ld\n",strlen(tab[0]));
-	printf("--%s\n",ft_split("tripouille", 0)[0]);
-	/*while (i <= countword("tripouille", 0))
-	{
-		printf("%s\n",ft_split("tripouille", 0)[i]);
-		i++;
-	}
-	//free(*tab);
-	return (0);
-}*/

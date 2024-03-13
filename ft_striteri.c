@@ -5,21 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nerica-k <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/07 07:44:10 by nerica-k          #+#    #+#             */
-/*   Updated: 2024/03/07 07:44:12 by nerica-k         ###   ########.fr       */
+/*   Created: 2024/03/13 14:02:05 by nerica-k          #+#    #+#             */
+/*   Updated: 2024/03/13 14:02:11 by nerica-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+void	*ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	size_t	i;
+	unsigned int	i;
 
 	i = 0;
 	while (s[i])
 	{
-		(*f)(i, s + i);
+		(*f)(i, (char *)&s[i]);
 		i++;
 	}
 }

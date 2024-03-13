@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nerica-k <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/07 07:44:02 by nerica-k          #+#    #+#             */
-/*   Updated: 2024/03/07 07:44:05 by nerica-k         ###   ########.fr       */
+/*   Created: 2024/03/13 14:02:16 by nerica-k          #+#    #+#             */
+/*   Updated: 2024/03/13 14:02:19 by nerica-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
