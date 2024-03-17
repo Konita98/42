@@ -36,6 +36,20 @@ static int	countword(char const *s, char c)
 	return (count);
 }
 
+static	void	*free_tab(char **tab, int n)
+{
+	int	i;
+
+	i = 0;
+	while (i <= n)
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
+	return (NULL);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**tab;
@@ -56,6 +70,8 @@ char	**ft_split(char const *s, char c)
 		while (s[i] != c && s[i] != '\0')
 			i++;
 		tab[j++] = ft_substr(s, 0, i);
+		if (!tab[j - 1])
+			return (free_tab(tab, j - 1));
 		s += i;
 	}
 	tab[count] = NULL;

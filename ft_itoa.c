@@ -6,24 +6,23 @@
 /*   By: nerica-k <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 18:02:31 by nerica-k          #+#    #+#             */
-/*   Updated: 2024/03/12 13:33:02 by nerica-k         ###   ########.fr       */
+/*   Updated: 2024/03/17 15:22:49 by nerica-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-/*#include <stdlib.h>
-#include <stdio.h>*/
-static long long	absolute(long long n)
+
+static long	absolute(int n)
 {
 	if (n < 0)
-		return (n * (-1));
+		return (-n);
 	return (n);
 }
 
-static long long	len_malloc(long long n)
+static long	len_malloc(int n)
 {
-	long long		i;
-	long long		nb;
+	int		i;
+	int		nb;
 
 	i = 1;
 	nb = absolute (n);
@@ -49,36 +48,25 @@ static long long	len_malloc(long long n)
 	}
 }
 
-char	*ft_itoa(long long n)
+char	*ft_itoa(int n)
 {
 	char			*result;
-	long long		len;
-	long long		nb;
+	int				len;
 
-	nb = absolute(n);
 	len = len_malloc(n);
 	result = (char *)malloc((len + 1) * sizeof(char));
 	if (!result)
-		return (NULL);
+		return (0);
+	result[len] = '\0';
 	if (n < 0)
 		result[0] = 45;
-	if (nb == 0)
+	if (n == 0)
 		result[0] = '0';
-	result[len] = '\0';
-	while (nb != 0)
+	while (n != 0 && len > 0)
 	{
-		result[len - 1] = (nb % 10) + '0';
-		nb /= 10;
+		result[len - 1] = absolute(n % 10) + '0';
+		n = n / 10;
 		len--;
 	}
 	return (result);
 }
-
-/*#include <stdio.h>
-int main(void)
-{
-	char *result = ft_itoa(-2147483648);
-	printf("ft existant---%s\n",result);
-	free(result);
-	return (0);
-}*/

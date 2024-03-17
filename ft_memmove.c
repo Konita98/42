@@ -6,46 +6,52 @@
 /*   By: nerica-k <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 14:38:52 by nerica-k          #+#    #+#             */
-/*   Updated: 2024/03/02 09:08:18 by nerica-k         ###   ########.fr       */
+/*   Updated: 2024/03/17 11:32:06 by nerica-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memmove(void *d, const void *s, int n)
+#include "libft.h"
+
+void	*ft_memmove(void *d, const void *s, unsigned long n)
 {
-	char	*src;
-	char	*dest;
-	char	tmp[100];
-	int		i;
+	char				*src;
+	char				*dest;
+	unsigned long		i;
 
 	src = (char *) s;
 	dest = (char *) d;
 	i = 0;
-	if (!d && !s)
+	if (n == 0)
+		return (dest);
+	if (!d & !s)
 		return (0);
-	while (i != n && *src != '\0')
+	if (s <= d)
 	{
-		tmp[i] = src[i];
-		i++;
+		i = n - 1;
+		while (i > 0)
+		{
+			dest[i] = src[i];
+			i--;
+		}
+		dest[i] = src[i];
+		return (dest);
 	}
-	i = 0;
-	while (i != n)
-	{
-		dest[i] = tmp[i];
-		i++;
-	}
-	return (dest);
+	return (ft_memcpy(d, s, n));
 }
 /*#include <stdio.h>
 #include <string.h>
 int	main(void)
 {
-	char src[] = "hello eeryoihlwre";
-	char dst[] = "my name is erica kone";
-	char src1[] = "hello eeryoihlwre";
-	char dst1[] = "my name is erica kone";
-	ft_memmove(dst, src, 6);
-	memmove(dst1, src1, 6);
-	printf("ft cree: %s \n", dst );
-	printf("ft cree: %s", dst1 );
+//your memmove does not segfault when null params is sent
+	char *src = "thanks to @apellicc for this test !\r\n";
+ 	char dst1[0xF0];
+ 	int size = strlen(src);
+ 	char *r1 = memmove(dst1, src, size);
+ 	char *r2 = ft_memmove(dst1, src, size);
+ 	r1 = memmove("", "" - 1, 0);
+ 	r2 = ft_memmove("", "" - 1, 0);
+
+	printf("ft 1: %s\n", r1);
+	printf("ft 2: %s\n", r2);
 	return(0);
 }*/

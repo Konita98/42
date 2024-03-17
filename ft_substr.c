@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 static	void	*str_malloc(char const *s, unsigned int start, size_t len)
 {
@@ -22,6 +23,8 @@ static	void	*str_malloc(char const *s, unsigned int start, size_t len)
 		len_malloc = len;
 	else if (start + (unsigned int)len >= (unsigned int)ft_strlen((char *)s))
 		len_malloc = (unsigned int)ft_strlen((char *)s) - start;
+	else if (start > (unsigned int)ft_strlen((char *)s))
+		len_malloc = 0;
 	else
 		len_malloc = 0;
 	return ((char *)malloc((len_malloc + 1) * sizeof(char)));
@@ -35,12 +38,14 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	unsigned int	j;
 
 	str = (char *) s;
+	if (!s)
+		return (NULL);
 	substr = (char *)str_malloc(s, start, len);
 	i = start;
 	j = 0;
-	if (s == 0 || substr == 0)
-		return (0);
-	while (i < ((unsigned int)ft_strlen(str)+1) && j < len)
+	if (!substr)
+		return (NULL);
+	while (i < ((unsigned int)ft_strlen(str) + 1) && j < len)
 	{
 		substr[j] = str[i];
 		i++;
@@ -52,9 +57,11 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 /*int main(void)
 {
-	printf("malloc1 %s\n",ft_substr("tripouille", 100, 1));
-	printf("malloc1 %s\n",ft_substr("0123456789", 9, 10));
-	printf("malloc1 %s\n",ft_substr("BONJOUR LES HARICOTS !", 8, 14));
+	char *res = ft_substr("1", 42, 42000000);
+	printf("malloc1 %s\n", res);
+	free(res);
+	//printf("malloc1 %s\n",ft_substr("0123456789", 9, 10));
+	//printf("malloc1 %s\n",ft_substr("BONJOUR LES HARICOTS !", 8, 14));
 	//printf("ft cree %s\n",substr("coucouc tout le monde", 5, 5));
 	return (0);
 }*/

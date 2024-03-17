@@ -9,23 +9,23 @@
 /*   Updated: 2024/02/24 08:26:00 by nerica-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-int	ft_isdigit(char a)
+int	ft_isdigit(int a)
 {
-	int	val;
-
-	val = 0;
 	if (a >= 48 && a <= 57)
-	{
-		val = 1;
-	}
-	return (val);
+		return (1);
+	if (!ft_isascii(a))
+		return (0);
+	return (0);
 }
 
 /*#include <stdio.h>
+#include <ctype.h>
 int main(void)
 {
-	char q='4';
-	printf("%d", ft_isdigit(q));
+	//char q='4';
+	printf("%d", ft_isdigit(530));
+	printf("%d", isdigit(530));
 	return 0;
 }*/
