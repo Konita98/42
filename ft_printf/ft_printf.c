@@ -1,5 +1,5 @@
 
-#include "ft_printf_tools.h"
+#include "ft_printf.h"
 #include <stdarg.h>
 
 static int ft_print_acc_format(char format, va_list pt)
@@ -16,6 +16,8 @@ static int ft_print_acc_format(char format, va_list pt)
 		return(ft_putnbr_hexa(va_arg(pt, int)));
 	else if(format == 'X')
 		return(ft_toupper(ft_putnbr_hexa(va_arg(pt, int))));
+	else if(format == 'p')
+		return(ft_printptr(va_arg(pt, void *)));
 	return(-1);
 }
 
@@ -41,10 +43,14 @@ int ft_printf(const char *str, ...)
 	return(count);
 }
 
-#include <stdio.h>
-int main(void)
+/*#include <stdio.h>
+int main(void) 
 {
-	ft_printf("%s hellobitch %c%%","fjhs", 'z', 5);
-	printf("\n%s hellobitch %c%%","fjhs", 'z');
+	int *p;
+	
+	int nb=2;
+	p=&nb;
+	printf("\n%s hellobitch %c%% %p","fjhs", 'z', p);
+	printf("\n%s hellobitch %c%% %p","fjhs", 'z', p);
 	return 0;
-}
+}*/

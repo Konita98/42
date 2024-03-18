@@ -12,5 +12,6 @@ int	ft_strlen(char const *str);
 char	*ft_itoa(int n);
 unsigned long	ft_putnbr_hexa(unsigned int n);
 int	ft_toupper(int c);
+unsigned long ft_printptr(void *ptr);
 
 #endif /* __FT_PRINT_CHAR_H__ */

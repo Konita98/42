@@ -1,27 +1,30 @@
+#include "ft_printf.h"
 
-#include "ft_printf_tools.h"
-int ft_printchar(int c)
+int	ft_printchar(int c)
 {
 	ft_putchar(c);
-	return(1);
+	return (1);
 }
 
-int ft_printstr(char *str)
+int	ft_printstr(char *str)
 {
 	ft_putstr(str);
-	return(ft_strlen(str));
+	return (ft_strlen(str));
 }
 
-int ft_printnbr(int nbr)
+int	ft_printnbr(int nbr)
 {
 	char	*nbwrd;
 	nbwrd = ft_itoa(nbr);
 	ft_printstr(nbwrd);
-	return(ft_strlen(nbwrd));
+	return (ft_strlen(nbwrd));
 }
 
-/*int ft_printpercent()
+unsigned long	ft_printptr(void *ptr)
 {
-	ft_putchar_fd('%', 1);
-	return(1);
-}*/
+	unsigned long	count;
+	count = 0;
+	count += write(1,"0x",2);
+	count += ft_putnbr_hexa((unsigned long)ptr);
+	return (count);
+}

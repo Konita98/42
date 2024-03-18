@@ -1,10 +1,10 @@
 #include <unistd.h>
-#include <stdio.h>
+
 unsigned long	ft_putnbr_hexa(unsigned int n)
 {
 	char	hex;
 	char	ch;
-	int	 count;
+	int	count;
 
 	count = 0;
 	if (n >= 16)
@@ -24,10 +24,4 @@ unsigned long	ft_putnbr_hexa(unsigned int n)
 		count = write(1, &hex,1);
 	}
 	return(0); 
-}
-
-int main(void)
-{
-	printf("%ld", ft_putnbr_hexa(1000));
-	return(0);
 }

@@ -38,9 +38,3 @@ void	ft_putnbr(int n)
 		write(1, &ch, 1);
 	}
 }
-/*
-int main(void)
-{
-	ft_putnbr_fd(45987);
-	return 0;
-}*/
