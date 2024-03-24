@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nerica-k <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/07 07:40:12 by nerica-k          #+#    #+#             */
-/*   Updated: 2024/03/13 14:01:20 by nerica-k         ###   ########.fr       */
+/*   Created: 2024/03/07 07:43:49 by nerica-k          #+#    #+#             */
+/*   Updated: 2024/03/13 14:01:58 by nerica-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <unistd.h>
 
-#include "libft.h"
-
-void	ft_putendl_fd(char *s, int fd)
+void	ft_putstr(char *s)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (s[i])
 		i++;
-	write(fd, s, i);
-	write(fd, "\n", 1);
+	write(1, s, i);
 }
